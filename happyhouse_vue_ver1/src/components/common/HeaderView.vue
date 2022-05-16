@@ -35,7 +35,7 @@
 
       <!-- 로그인/로그아웃 버튼 Start -->
 
-      <a href="#login" class="get-started-btn scrollto">로그인</a>
+      <a href="/login" class="get-started-btn scrollto">로그인</a>
 
       <a href="#logout" class="get-started-btn scrollto">로그아웃</a>
 
