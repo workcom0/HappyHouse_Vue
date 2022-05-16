@@ -1,19 +1,7 @@
 <template>
   <div>
     <!-- ======= 페이지 제목 섹션 Start ======= -->
-    <section class="PageTitle">
-      <div class="container">
-        <div
-          class="section-title pt-3 pb-0 d-flex justify-content-between align-items-center"
-        >
-          <h2>About</h2>
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>About</li>
-          </ol>
-        </div>
-      </div>
-    </section>
+    <PageTitleView title="About"></PageTitleView>
     <!-- 페이지 제목 섹션 End -->
 
     <!-- ======= 소개 Start ======= -->
@@ -31,7 +19,14 @@
 </template>
 
 <script>
-export default {};
+import PageTitleView from "@/components/common/PageTitleView.vue";
+
+export default {
+  name: "AboutView",
+  components: {
+    PageTitleView,
+  },
+};
 </script>
 
 <style></style>
