@@ -1,25 +1,22 @@
 <template>
   <div>
     <!-- ======= 페이지 제목 섹션 Start ======= -->
-    <section class="PageTitle">
-      <div class="container">
-        <div
-          class="section-title pt-3 pb-0 d-flex justify-content-between align-items-center"
-        >
-          <h2>공지사항</h2>
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>공지사항</li>
-          </ol>
-        </div>
-      </div>
-    </section>
+    <PageTitleView title="공지사항"></PageTitleView>
     <!-- 페이지 제목 섹션 End -->
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import PageTitleView from "@/components/common/PageTitleView.vue";
+
+export default {
+  name: "NoticeView",
+  components: {
+    PageTitleView,
+  },
+};
 </script>
 
 <style></style>
