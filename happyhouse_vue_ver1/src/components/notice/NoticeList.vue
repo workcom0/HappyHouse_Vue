@@ -9,7 +9,7 @@
               <form>
                 <select
                   class="form-control mx-1"
-                  id="skey"
+                  id="key"
                   name="key"
                   style="width: 100px; display: inline"
                 >
@@ -17,12 +17,19 @@
                   <option value="subject">제목</option>
                   <option value="content">내용</option>
                 </select>
-                <input name="word" type="text" id="sword" class="mx-1" />
+                <input name="word" type="text" id="word" class="mx-1" />
                 <button class="btn btn-secondary btn-xs">검색</button>
               </form>
             </div>
 
-            <b-table striped hover :items="items" :fields="fields"> </b-table>
+            <b-table
+              hover
+              :items="items"
+              :per-page="perPage"
+              :current-page="currentPage"
+              @row-clicked="detail"
+            >
+            </b-table>
 
             <div class="row mt-2 mx-1" style="width: 100px; float: right">
               <button
@@ -34,6 +41,13 @@
               </button>
             </div>
             <br />
+            <b-pagination
+              align="center"
+              v-model="currentPage"
+              :total-rows="rows"
+              :per-page="perPage"
+              aria-controls="my-table"
+            ></b-pagination>
           </div>
         </div>
         <div
@@ -48,17 +62,42 @@
 </template>
 
 <script>
+import http from "@/api/http";
+
 export default {
   name: "NoticeList",
   data() {
     return {
       fields: ["No", "제목", "작성자", "작성일자"],
       items: [],
+      perPage: 10,
+      currentPage: 1,
     };
+  },
+  created() {
+    http
+      .get("/notice")
+      .then(({ data }) => {
+        for (let i = 0; i < data.length; i++) {
+          delete data[i].content;
+        }
+        this.items = data;
+      })
+      .catch(({ error }) => {
+        alert("공지사항 목록 불러오기 에러 발생!! ", error);
+      });
+  },
+  computed: {
+    rows() {
+      return this.items.length;
+    },
   },
   methods: {
     WriteBtn() {
       this.$router.push("/notice/write");
+    },
+    detail(item) {
+      this.$router.push(`notice/detail?articleNo=${item.articleNo}`);
     },
   },
 };

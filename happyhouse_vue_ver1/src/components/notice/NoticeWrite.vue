@@ -4,7 +4,7 @@
     <div class="container">
       <div class="col-lg-12" align="center" style="margin: auto">
         <h3>공지사항 등록</h3>
-        <form id="form" method="post" action="">
+        <form>
           <div class="form-group mb-3 mt-3" align="left">
             <label for="subject"></label>
             <input
@@ -28,12 +28,10 @@
             ></textarea>
           </div>
           <div>
-            <button type="button" id="cancelBtn" class="btn btn-secondary m-3">
+            <button type="button" id="" class="btn btn-secondary m-3">
               취소
             </button>
-            <button type="button" id="registNoticeBtn" class="btn btn-warning">
-              글작성
-            </button>
+            <button type="button" id="" class="btn btn-warning">글작성</button>
           </div>
         </form>
       </div>
